@@ -345,7 +345,7 @@ color: #204080;
 }
 .lesson-box:hover {
   background: #ffe066;
-  color: #204080;
+  color: #204080; 
   box-shadow: 0 6px 18px rgba(40,81,151,0.18);
 }
 /* ====== SECTION 3: FOOTER ====== */
