@@ -1,0 +1,498 @@
+body{
+margin: 0;
+font-family: 'Montserrat', Arial, sans-serif;
+background: #f5f7fa;
+font-size: 16px; /* Establish a consistent base for em units, matching common browser defaults */
+color: #204080;
+}
+
+/* ====== NAVIGATION BAR ====== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #285197;
+  padding: 0 48px;
+  height: 70px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 1.6em;
+  width: 1.6em;
+  margin-right: 14px;
+ border-radius: 0; /* Live site style (square logo) */
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+.navbar-title {
+  color: #fff;
+  font-size: 1.6em;   /* Live site size */
+  font-weight: 700; /* Live site weight */
+  line-height: 1.1;
+}
+
+.navbar-title .auto { color: #fff; }
+.navbar-title .learn { color: #FFD600; }
+.navbar-title .ph {
+  color: #fff;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li { margin-left: 32px; }
+
+.navbar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 8px 18px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 600;
+  background: transparent;
+}
+
+.navbar-menu li a.active,
+.navbar-menu li a:hover {
+  background: #3b5998;
+  color: #fff;
+}
+
+/* ====== DROPDOWN MENU STYLES ====== */
+
+/* Container for the menu item that will have a dropdown */
+.navbar-menu li.has-dropdown {
+  position: relative; /* Establishes a positioning context for the submenu */
+}
+
+/* Add a visual indicator (e.g., a down arrow) to links that have a dropdown */
+.navbar-menu li.has-dropdown > a::after {
+  content: ''; /* Necessary for the pseudo-element to be generated */
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.5em; /* Space between text and arrow */
+  vertical-align: middle; /* Align arrow with the text */
+  border-left: 4px solid transparent; /* Create triangle shape */
+  border-right: 4px solid transparent; /* Create triangle shape */
+  border-top: 5px solid currentColor; /* Color of the arrow (inherits link color) */
+  opacity: 0.7; /* Make it slightly less prominent than text */
+}
+
+/* The dropdown submenu itself */
+.dropdown-submenu {
+  display: none; /* Hidden by default */
+  position: absolute; /* Positioned relative to the nearest positioned ancestor (li.has-dropdown) */
+  top: 100%; /* Position it directly below the parent list item */
+  left: 0; /* Align with the left edge of the parent list item */
+  background-color: #3b5998; /* Background color - consistent with nav link hover */
+  list-style: none; /* Remove default bullet points */
+  padding: 8px 0; /* Padding for the dropdown container */
+  margin: 0; /* Reset default margin */
+  min-width: 220px; /* Minimum width of the dropdown, adjust as needed */
+  z-index: 1000; /* Ensure it appears above other content */
+  border-radius: 0 0 6px 6px; /* Optional: rounded bottom corners, matching nav link radius */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* A subtle shadow for depth */
+  border-top: 1px solid #285197; /* Optional: a separator line, using main nav color */
+}
+
+/* Show the dropdown submenu when hovering over the parent list item */
+.navbar-menu li.has-dropdown:hover .dropdown-submenu {
+  display: block;
+}
+
+/* Styling for individual items within the dropdown submenu */
+.dropdown-submenu li {
+  margin-left: 0; /* Override any margin from .navbar-menu li */
+  width: 100%; /* Make list items take full width of the dropdown */
+}
+
+.dropdown-submenu li a {
+  display: block; /* Make the link fill the entire list item for easier clicking */
+  padding: 10px 20px; /* Adjust padding for dropdown links */
+  color: #fff; /* Text color for dropdown links */
+  text-decoration: none; /* Ensure no underline from parent styles */
+  background-color: transparent; /* Ensure no background from parent :hover state initially */
+  border-radius: 0; /* Dropdown items usually don't have individual border-radius */
+  font-weight: 500; /* Slightly less bold than main nav items, or adjust as preferred */
+  white-space: nowrap; /* Prevent text from wrapping */
+  transition: background-color 0.2s, color 0.2s; /* Smooth transition for hover */
+}
+
+/* Hover state for dropdown submenu links */
+.dropdown-submenu li a:hover {
+  background-color: #285197; /* Main navbar color for hover background */
+  color: #FFD600; /* Accent color for text on hover, like .navbar-title .learn */
+}
+
+/* ====== HAMBURGER MENU STYLES ====== */
+.hamburger-menu {
+    display: none; /* Hidden by default, shown in media query */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px; /* Width of the hamburger icon */
+    height: 25px; /* Height of the hamburger icon */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* Ensure it's above other nav items */
+    margin-left: auto; /* Pushes hamburger to the right if other elements are in navbar-left */
+}
+
+.hamburger-menu .hamburger-bar {
+    display: block;
+    width: 100%;
+    height: 3px; /* Thickness of the bars */
+    background-color: #fff; /* Color of the bars */
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* "X" animation for active hamburger */
+.hamburger-menu.active .hamburger-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger-menu.active .hamburger-bar:nth-child(2) { opacity: 0; }
+.hamburger-menu.active .hamburger-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+
+/* ===== SECTION 1: HERO ===== */
+.section-blue {
+  background: #b3c6e0;
+  color: #204080;
+  padding: 56px 0 48px 0;
+  text-align: center;
+}
+.section-blue .main-title {
+  font-size: 2.6em;
+  font-weight: 700;
+  margin-bottom: 18px;
+  margin-top: 32px;
+}
+.section-blue .subtitle {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+.start-btn {
+  background: #FFD600;
+  color: #285197;
+  font-weight: 700;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  text-decoration: none;
+  margin-top: 24px;
+  display: inline-block;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.start-btn:hover {
+  background: #ffe066;
+  color: #204080;
+}
+
+/* ===== SECTION 2: FEATURES ===== */
+.section-white {
+  background: #b3c6e0;
+  color: #204080;
+  padding: 56px 0 48px 0;
+  text-align: center;
+}
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.feature-box {
+  background: #ffffff;
+  color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(40,81,151,0.13);
+  padding: 32px 28px;
+  width: 320px;
+  min-height: 220px;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.feature-box:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(40,81,151,0.18);
+  background: #2a60b1;
+}
+.feature-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #FFD600;
+}
+.feature-desc {
+  font-size: 1em;
+  color: #000000;
+  line-height: 1.5;
+}
+
+/* ===== SECTION 2: LESSON/VIDEO PRESENTATION ===== */
+.lesson-video-container {
+  background: #fff;
+  border-radius: 18px;
+  min-height: 380px;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 32px; /* Keep top margin */
+  margin-bottom: 32px; /* Keep bottom margin */
+  box-shadow: 0 4px 24px rgba(40,81,151,0.10);
+  display: flex;
+  flex-direction: row; /* Arrange items horizontally */
+  align-items: flex-start; /* Align items to the top */
+  justify-content: flex-start; /* Start items from the left */
+  flex-wrap: wrap; /* Allow items to wrap to the next line if space runs out */
+  gap: 30px; /* Add space between cards */
+  padding: 40px; /* Add padding inside the box */
+  /* font-size: 1.4em; */ /* Removed to allow content to define its own size */
+  /* color: #b3c6e0; */ /* Removed as content will have its own color */
+}
+
+/* ===== CAR LESSON CARD STYLES ===== */
+.car-lesson-card {
+  display: flex; /* Use flexbox to stack content */
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  text-decoration: none; /* Remove underline from link */
+  background-color: #FFD600; /* Bright yellow background */
+  color: #204080; /* Dark blue text */
+  padding: 30px 20px; /* Padding inside the card */
+  border-radius: 16px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Subtle shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 220px; /* Fixed width for the card */
+  min-height: 180px; /* Ensure a decent height */
+  text-align: center; /* Center text content within the card */
+  /* margin-bottom: 20px; Removed as gap property on parent handles spacing */
+  justify-content: center; /* Vertically center content within the card */
+}
+
+.car-lesson-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* Slightly larger shadow on hover */
+}
+
+.card-emoji {
+  font-size: 3em; /* Large emoji size */
+  /* font-weight: 600; If emoji is text-based and supports weight */
+  margin-bottom: 10px; /* Space below emoji */
+}
+
+.card-title {
+  font-size: 1.5em; /* Size for "Car" text */
+  font-weight: bold;
+  margin-top: 0; /* Reset margin if emoji has margin-bottom */
+  margin-bottom: 5px; /* Space above subtitle */
+}
+
+.card-subtitle {
+  font-size: 0.9em; /* Smaller size for subtitle */
+}
+
+/* Utility class if needed for other elements, though not used by the card directly */
+.hidden {
+  display: none !important;
+}
+.lesson-box-link {
+  text-decoration: none;
+  color: #204080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lesson-box {
+  background: #FFD600;
+  color: #285197;
+  padding: 32px 32px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  margin-top: 16px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.lesson-box:hover {
+  background: #ffe066;
+  color: #204080; 
+  box-shadow: 0 6px 18px rgba(40,81,151,0.18);
+}
+/* ====== SECTION 3: FOOTER ====== */
+.footer-section {
+  background: #285197;
+  color: #204080;
+  padding: 48px 0 24px 0;
+  text-align: center;
+}
+.footer-columns {
+  display: flex;
+  justify-content: center;
+  gap: 56px;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+.footer-col {
+  min-width: 220px;
+  text-align: left;
+  flex: 1 1 0;
+  background: #285197; /* Live site card background */
+  border-radius: 14px;  /* Live site card radius */
+  box-shadow: 0 4px 18px rgba(40,81,151,0.18); /* Live site card shadow */
+  padding: 24px 18px; /* Live site card padding */
+  margin: 0 0 24px 0;
+  color: #fff; /* Default text color for elements inside, like p.footer-desc */
+}
+/* Removed .footer-col:hover as live site doesn't change these properties on hover */
+
+
+.footer-header {
+  display: inline-block;
+}
+
+.footer-header h3 {
+  color: #ffffff; /* Live site heading color */
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-bottom: 12px;
+  position: relative;
+   display: inline-block; /* Important for positioning the underline span if it's a child */
+}
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+}
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+.footer-col ul li a {
+  color: #ffffff; /* Live site link color */
+  text-decoration: none;
+  font-size: 1em;
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover {
+  color: #FFD600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footer-contact {
+  color: #ffffff; /* Live site contact text color */
+  font-size: 1em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+
+  
+}
+.footer-bottom {
+  text-align: center;
+  font-size: 0.98em;
+  color: #b3c6e0;
+  margin-top: 0;
+  padding-bottom: 18px;
+}
+.footer-bottom hr { /* Style for the hr in footer bottom */
+    border: none;
+    border-top: 1px solid #3b4e7a;
+    margin: 24px 0 12px 0;
+}
+.footer-underline {
+  display: block;
+ height: 3px;        /* Live site style */
+  width: 36px;        /* Live site style */
+  background: #FFD600;
+  border-radius: 2px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 900px) {
+  .features, .footer-columns {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .navbar {
+    /* Keep navbar as a row to align logo and hamburger */
+    justify-content: space-between; /* Logo left, hamburger right */
+    align-items: center;
+    height: 70px; /* Maintain consistent height */
+    padding: 0 16px; /* Adjusted padding for mobile */
+    position: relative; /* For absolute positioning of the menu */
+  }
+
+  .hamburger-menu {
+    display: flex; /* Show the hamburger menu on small screens */
+  }
+
+  .navbar-menu {
+    display: none; /* Hide the menu by default on small screens */
+    flex-direction: column;
+    width: 100%;
+    position: absolute; /* Position it below the navbar */
+    top: 70px; /* Directly below the navbar (assuming navbar height is 70px) */
+    left: 0;
+    background-color: #285197; /* Match navbar background */
+    padding: 10px 0; /* Padding for the dropdown container */
+    z-index: 1000; /* Ensure it's above content below */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: subtle shadow */
+  }
+
+  .navbar-menu.active { /* This class is toggled by JavaScript */
+    display: flex; /* Show the menu when active */
+  }
+
+  .navbar-menu li {
+    margin-left: 0;
+    margin-bottom: 0; /* Remove bottom margin, use padding/border on <a> */
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-menu li a {
+    display: block; /* Make links full width for easier tapping */
+    padding: 12px 20px; /* Adjust padding for touch targets */
+    border-bottom: 1px solid #3b5998; /* Subtle separator, using a color from your palette */
+  }
+  .navbar-menu li:last-child a {
+    border-bottom: none; /* No border for the last item */
+  }
+
+  .footer-col {
+    min-width: 0;
+    width: 90%; /* Give some space on sides */
+    max-width: 400px; /* Prevent them from becoming too wide */
+  }
+}
