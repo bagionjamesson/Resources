@@ -1,10 +1,12 @@
-body {
-  margin: 0;
-  font-family: 'Montserrat', Arial, sans-serif;
-  background: #f5f7fa;
-  color: #204080;
+body{
+margin: 0;
+font-family: 'Montserrat', Arial, sans-serif;
+background: #f5f7fa;
+font-size: 16px; /* Establish a consistent base for em units, matching common browser defaults */
+color: #204080;
 }
-/* ===== NAVBAR ===== */
+
+/* ====== NAVIGATION BAR ====== */
 .navbar {
   display: flex;
   align-items: center;
@@ -13,29 +15,36 @@ body {
   padding: 0 48px;
   height: 70px;
 }
+
 .navbar-left {
   display: flex;
   align-items: center;
 }
+
 .navbar-logo {
-  width: 2em;
-  height: 2em;
+  height: 1.6em;
+  width: 1.6em;
   margin-right: 14px;
-  border-radius: 0;      /* Square logo */
+ border-radius: 0; /* Live site style (square logo) */
   object-fit: cover;
   vertical-align: middle;
 }
+
 .navbar-title {
   color: #fff;
-  font-size: 1.6em;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
+  font-size: 1.6em;   /* Live site size */
+  font-weight: 700; /* Live site weight */
+  line-height: 1.1;
 }
+
 .navbar-title .auto { color: #fff; }
-.navbar-title .learn { color: #FFD600; margin-left: 2px; }
-.navbar-title .ph { color: #fff; font-size: 1em; font-weight: 500; margin-left: 4px; }
+.navbar-title .learn { color: #FFD600; }
+.navbar-title .ph {
+  color: #fff;
+  font-size: 1em;
+  font-weight: 500;
+}
+
 .navbar-menu {
   display: flex;
   align-items: center;
@@ -43,96 +52,121 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .navbar-menu li { margin-left: 32px; }
+
 .navbar-menu li a {
   color: #fff;
   text-decoration: none;
   font-size: 1em;
-  font-weight: 600;
   padding: 8px 18px;
   border-radius: 6px;
   transition: background 0.2s, color 0.2s;
+  font-weight: 600;
   background: transparent;
 }
+
 .navbar-menu li a.active,
 .navbar-menu li a:hover {
-  background: #4666a3;
+  background: #3b5998;
   color: #fff;
 }
 
-/* Style for the dropdown indicator arrow */
-.navbar-menu > li.has-dropdown > a {
-  position: relative; /* Needed for absolute positioning of the arrow */
-  padding-right: 30px; /* Add some space for the arrow */
-}
+/* ====== DROPDOWN MENU STYLES ====== */
 
-.navbar-menu > li.has-dropdown > a::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 12px; /* Adjust to position the arrow */
-  width: 0;
-  height: 0;
-  /* Create a downward-pointing triangle */
-  border-left: 4px solid transparent;  /* Triangle side */
-  border-right: 4px solid transparent; /* Triangle side */
-  border-top: 5px solid #cccccc;       /* Triangle base (points down), changed to light gray */
-  border-bottom: none; /* Ensure no bottom border */
-
-  /*
-    To vertically center the triangle (which is 5px high from border-top):
-    'top: 50%' positions the top of the ::after element at the link's vertical center.
-    The triangle then draws 5px downwards. We shift it up by half its height (2.5px).
-  */
-  transform: translateY(-2.5px);
-}
-
-/* ===== NAVBAR DROPDOWN STYLES ===== */
-.navbar-menu > li.has-dropdown {
+/* Container for the menu item that will have a dropdown */
+.navbar-menu li.has-dropdown {
   position: relative; /* Establishes a positioning context for the submenu */
 }
 
-.navbar-menu > li.has-dropdown > .dropdown-submenu {
+/* Add a visual indicator (e.g., a down arrow) to links that have a dropdown */
+.navbar-menu li.has-dropdown > a::after {
+  content: ''; /* Necessary for the pseudo-element to be generated */
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.5em; /* Space between text and arrow */
+  vertical-align: middle; /* Align arrow with the text */
+  border-left: 4px solid transparent; /* Create triangle shape */
+  border-right: 4px solid transparent; /* Create triangle shape */
+  border-top: 5px solid currentColor; /* Color of the arrow (inherits link color) */
+  opacity: 0.7; /* Make it slightly less prominent than text */
+}
+
+/* The dropdown submenu itself */
+.dropdown-submenu {
   display: none; /* Hidden by default */
-  position: absolute;
-  top: 100%; /* Position directly below the parent list item */
-  left: 0;
-  background-color: #285197; /* Background color similar to navbar */
-  border-radius: 0 0 8px 8px; /* Rounded bottom corners */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Subtle shadow for depth */
-  padding: 10px 0; /* Padding at the top and bottom of the submenu */
-  min-width: 220px; /* Minimum width of the dropdown */
-  z-index: 1000; /* Ensure dropdown appears above other content */
+  position: absolute; /* Positioned relative to the nearest positioned ancestor (li.has-dropdown) */
+  top: 100%; /* Position it directly below the parent list item */
+  left: 0; /* Align with the left edge of the parent list item */
+  background-color: #3b5998; /* Background color - consistent with nav link hover */
   list-style: none; /* Remove default bullet points */
+  padding: 8px 0; /* Padding for the dropdown container */
   margin: 0; /* Reset default margin */
+  min-width: 220px; /* Minimum width of the dropdown, adjust as needed */
+  z-index: 1000; /* Ensure it appears above other content */
+  border-radius: 0 0 6px 6px; /* Optional: rounded bottom corners, matching nav link radius */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* A subtle shadow for depth */
+  border-top: 1px solid #285197; /* Optional: a separator line, using main nav color */
 }
 
-.navbar-menu > li.has-dropdown:hover > .dropdown-submenu {
-  display: block; /* Show the submenu on hover of the parent */
+/* Show the dropdown submenu when hovering over the parent list item */
+.navbar-menu li.has-dropdown:hover .dropdown-submenu {
+  display: block;
 }
 
-.navbar-menu > li.has-dropdown > .dropdown-submenu > li {
-  margin: 0; /* Reset margin for individual list items in submenu */
+/* Styling for individual items within the dropdown submenu */
+.dropdown-submenu li {
+  margin-left: 0; /* Override any margin from .navbar-menu li */
+  width: 100%; /* Make list items take full width of the dropdown */
 }
 
-.navbar-menu > li.has-dropdown > .dropdown-submenu > li > a {
+.dropdown-submenu li a {
   display: block; /* Make the link fill the entire list item for easier clicking */
-  padding: 10px 20px; /* Padding for submenu links */
-  color: #fff; /* Text color for submenu links */
-  text-decoration: none;
-  white-space: nowrap; /* Prevent text from wrapping to the next line */
-  font-size: 0.9em; /* Slightly smaller font size for submenu items */
-  font-weight: 500; /* Adjust font-weight if needed, less than main nav items */
-  background: transparent; /* Ensure no inherited background from parent 'a' */
-  border-radius: 0; /* Reset border-radius from parent 'a' styles */
-  transition: background-color 0.2s ease; /* Smooth transition for hover */
+  padding: 10px 20px; /* Adjust padding for dropdown links */
+  color: #fff; /* Text color for dropdown links */
+  text-decoration: none; /* Ensure no underline from parent styles */
+  background-color: transparent; /* Ensure no background from parent :hover state initially */
+  border-radius: 0; /* Dropdown items usually don't have individual border-radius */
+  font-weight: 500; /* Slightly less bold than main nav items, or adjust as preferred */
+  white-space: nowrap; /* Prevent text from wrapping */
+  transition: background-color 0.2s, color 0.2s; /* Smooth transition for hover */
 }
 
-.navbar-menu > li.has-dropdown > .dropdown-submenu > li > a:hover {
-  background-color: #4666a3; /* Background color on hover, same as main nav link hover */
-  color: #fff; /* Ensure text color remains white on hover */
+/* Hover state for dropdown submenu links */
+.dropdown-submenu li a:hover {
+  background-color: #285197; /* Main navbar color for hover background */
+  color: #FFD600; /* Accent color for text on hover, like .navbar-title .learn */
 }
 
+/* ====== HAMBURGER MENU STYLES ====== */
+.hamburger-menu {
+    display: none; /* Hidden by default, shown in media query */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px; /* Width of the hamburger icon */
+    height: 25px; /* Height of the hamburger icon */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* Ensure it's above other nav items */
+    margin-left: auto; /* Pushes hamburger to the right if other elements are in navbar-left */
+}
+
+.hamburger-menu .hamburger-bar {
+    display: block;
+    width: 100%;
+    height: 3px; /* Thickness of the bars */
+    background-color: #fff; /* Color of the bars */
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* "X" animation for active hamburger */
+.hamburger-menu.active .hamburger-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger-menu.active .hamburger-bar:nth-child(2) { opacity: 0; }
+.hamburger-menu.active .hamburger-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 
 /* ===== SECTION 1: HERO ===== */
@@ -314,8 +348,7 @@ body {
   color: #204080;
   box-shadow: 0 6px 18px rgba(40,81,151,0.18);
 }
-
-/* ===== SECTION 3: FOOTER ===== */
+/* ====== SECTION 3: FOOTER ====== */
 .footer-section {
   background: #285197;
   color: #204080;
@@ -333,39 +366,27 @@ body {
   min-width: 220px;
   text-align: left;
   flex: 1 1 0;
-  background: #285197;
-  border-radius: 14px;
-  box-shadow: 0 4px 18px rgba(40,81,151,0.18);
-  padding: 24px 18px;
+  background: #285197; /* Live site card background */
+  border-radius: 14px;  /* Live site card radius */
+  box-shadow: 0 4px 18px rgba(40,81,151,0.18); /* Live site card shadow */
+  padding: 24px 18px; /* Live site card padding */
   margin: 0 0 24px 0;
-  transition: box-shadow 0.2s, background 0.2s;
-  color: #204080;
+  color: #fff; /* Default text color for elements inside, like p.footer-desc */
 }
-.footer-col h3 {
-  color: #ffffff;
+/* Removed .footer-col:hover as live site doesn't change these properties on hover */
+
+
+.footer-header {
+  display: inline-block;
+}
+
+.footer-header h3 {
+  color: #ffffff; /* Live site heading color */
   font-size: 1.1em;
   font-weight: 700;
   margin-bottom: 12px;
   position: relative;
-  display: inline-block;
-}
-.footer-underline {
-  display: block;
-  height: 3px;
-  width: 36px;
-  background: #FFD600;
-  border-radius: 2px;
-  margin-top: 4px;
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  content: "";
-}
-.footer-desc {
-  font-size: 1em;
-  margin-bottom: 24px;
-  color: #fff;
-  max-width: 320px;
+   display: inline-block; /* Important for positioning the underline span if it's a child */
 }
 .footer-col ul {
   list-style: none;
@@ -376,31 +397,25 @@ body {
   margin-bottom: 10px;
 }
 .footer-col ul li a {
-  color: #ffffff;
+  color: #ffffff; /* Live site link color */
   text-decoration: none;
   font-size: 1em;
   transition: color 0.2s;
 }
 .footer-col ul li a:hover {
-  color: #ffffff;
+  color: #FFD600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .footer-contact {
+  color: #ffffff; /* Live site contact text color */
   font-size: 1em;
-  color: #ffffff;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+
+  
 }
-.footer-social-link svg,
-.footer-contact .footer-social-link svg {
-  transition: fill 0.2s, color 0.2s;
-}
-.footer-social-link.mail:hover svg { fill: #FFD600; }
-.footer-social-link.phone:hover svg { fill: #4CAF50; }
-.footer-social-link.location:hover svg { fill: #03a9f4; }
-.footer-social-link { vertical-align: middle; margin-right: 10px; }
-.footer-social-link:last-child { margin-right: 0; }
-.footer-icon { margin-right: 8px; }
 .footer-bottom {
   text-align: center;
   font-size: 0.98em;
@@ -408,30 +423,76 @@ body {
   margin-top: 0;
   padding-bottom: 18px;
 }
+.footer-bottom hr { /* Style for the hr in footer bottom */
+    border: none;
+    border-top: 1px solid #3b4e7a;
+    margin: 24px 0 12px 0;
+}
+.footer-underline {
+  display: block;
+ height: 3px;        /* Live site style */
+  width: 36px;        /* Live site style */
+  background: #FFD600;
+  border-radius: 2px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
 
-/* ===== RESPONSIVE ===== */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 900px) {
   .features, .footer-columns {
     flex-direction: column;
-    align-items: center;
     gap: 24px;
   }
   .navbar {
-    flex-direction: column;
-    height: auto;
-    padding: 0 16px;
+    /* Keep navbar as a row to align logo and hamburger */
+    justify-content: space-between; /* Logo left, hamburger right */
+    align-items: center;
+    height: 70px; /* Maintain consistent height */
+    padding: 0 16px; /* Adjusted padding for mobile */
+    position: relative; /* For absolute positioning of the menu */
   }
+
+  .hamburger-menu {
+    display: flex; /* Show the hamburger menu on small screens */
+  }
+
   .navbar-menu {
-    margin-top: 12px;
+    display: none; /* Hide the menu by default on small screens */
+    flex-direction: column;
+    width: 100%;
+    position: absolute; /* Position it below the navbar */
+    top: 70px; /* Directly below the navbar (assuming navbar height is 70px) */
+    left: 0;
+    background-color: #285197; /* Match navbar background */
+    padding: 10px 0; /* Padding for the dropdown container */
+    z-index: 1000; /* Ensure it's above content below */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: subtle shadow */
   }
+
+  .navbar-menu.active { /* This class is toggled by JavaScript */
+    display: flex; /* Show the menu when active */
+  }
+
+  .navbar-menu li {
+    margin-left: 0;
+    margin-bottom: 0; /* Remove bottom margin, use padding/border on <a> */
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-menu li a {
+    display: block; /* Make links full width for easier tapping */
+    padding: 12px 20px; /* Adjust padding for touch targets */
+    border-bottom: 1px solid #3b5998; /* Subtle separator, using a color from your palette */
+  }
+  .navbar-menu li:last-child a {
+    border-bottom: none; /* No border for the last item */
+  }
+
   .footer-col {
     min-width: 0;
-    width: 100%;
+    width: 90%; /* Give some space on sides */
+    max-width: 400px; /* Prevent them from becoming too wide */
   }
-}
-.card-emoji {
-  width:200px;
-  height:200px;
-  object-fit: contain;
-  margin-bottom: 10px;
 }

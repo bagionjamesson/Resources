@@ -2,33 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Resources</title>
+  <title>AutoLearn PH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="logo.png"> <!-- Assuming logo.png is in the parent directory (public/) -->
-  <!-- Removed invalid stylesheet link: <link rel="stylesheet" href="my-website/public/menu.html"> -->
-  <!--  Link to your external CSS file -->
-<link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
   <!-- Navigation/Menu -->
   <nav class="navbar">
     <div class="navbar-left">
-      <a href="https://bagionjamesson.github.io/Home/" style="display: flex; align-items: center; text-decoration: none;"> <!-- Path to menu.html from Course/ -->
-        <img src="logo.png" alt="Logo" class="navbar-logo"> <!-- Path to logo.png from Course/ -->
+      <a href="https://bagionjamesson.github.io/Home/" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="logo.png" alt="Logo" class="navbar-logo" style="width: 2em; height: 2em; margin-right: 14px;">
         <div class="navbar-title">
           <span class="auto">Auto</span><span class="learn">Learn</span> <span class="ph">PH</span>
         </div>
       </a>
     </div>
-    <ul class="navbar-menu">
+    <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav-list">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+    <ul class="navbar-menu" id="main-nav-list">
       <li><a href="https://bagionjamesson.github.io/Home/">Home</a></li>
       <li><a href="https://bagionjamesson.github.io/Modules/">Modules</a></li>
       <li><a href="https://bagionjamesson.github.io/Resources/">Resources</a></li>
-      <li><a href="https://bagionjamesson.github.io/About/">About</a></li>
+      <li><a href="https://bagionjamesson.github.io/About/">About</a></li> 
     </ul>
+    <!-- Removed extra </li> and </ul> tags that were here -->
   </nav>
-
   <!-- Section 1: Downloadable Modules -->
   <section class="section" style="background: linear-gradient(120deg, #e3eafc 0%, #f7f9fc 100%); padding: 60px 0;">
     <div style="max-width: 900px; margin: 0 auto;">
@@ -137,9 +140,9 @@
       <div class="footer-col">
         <h3>Resources <span class="footer-underline"></span></h3>
         <ul>
-          <li><a href="https://bagionjamesson.github.io/Resources/#DownloadModule" target="_blank">Downloadable Modules</a></li>
-          <li><a href="https://bagionjamesson.github.io/Resources/#LegitimateExternalResources" target="_blank">Resources and References</a></li>
-          <li><a href="https://bagionjamesson.github.io/Resources/#HowToUse">Guide to Use Resources</a></li>
+          <li><a href="https://bagionjamesson.github.io/Resources/#DownloadModule" target="_self">Downloadable Modules</a></li>
+          <li><a href="https://bagionjamesson.github.io/Resources/#KeyAutomotiveLearningAndRepairReferences" target="_self">Resources and References</a></li>
+          <li><a href="https://bagionjamesson.github.io/Resources/#HowToUse" target="_self">Guide to Use Resources</a></li>
         </ul>
       </div>
       <!-- Column 4: Contact Us -->
@@ -149,7 +152,7 @@
           <a href="mailto:contact@autolearn.ph" class="footer-social-link mail" aria-label="Email">
             <svg class="footer-icon" width="20" height="20" fill="#FFD600" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l7.99 7.99c.39.39 1.02.39 1.41 0L20 10.01V20H4z"/></svg>
           </a>
-          bagionjamesson23@gmail.com
+          bagionjamesson12@gmail.com
         </div>
         <div class="footer-contact">
           <a href="tel:+639123456789" class="footer-social-link phone" aria-label="Phone">
@@ -165,13 +168,11 @@
         </div>
       </div>
     </div>
-    <div class="footer-bottom" style="text-align: center;">
-  <hr style="border: none; border-top: 1px solid #3b4e7a; margin: 24px 0 12px 0;">
-  © 2025 AutoLearn PH / Bagion James Son. All rights reserved.
-</div>
+    <div class="footer-bottom">
+      <hr style="border: none; border-top: 1px solid #3b4e7a; margin: 24px 0 12px 0;">
+      © 2025 AutoLearn PH / Bagion James Son. All rights reserved.
+    </div>
   </footer>
-  <!-- If you need JavaScript for this page, it would go here -->
-  <!-- Link to your main JavaScript file -->
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 </body>
 </html>
